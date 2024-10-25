@@ -1,16 +1,52 @@
 /* General */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif; /* Tipografía general */
     margin: 0;
     padding: 0;
+    background-color: #1a1a1a; /* Fondo oscuro para Halloween */
+    color: #f5f5f5; /* Color de texto claro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1, h2 {
+header {
     text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #ff5722;
+    width: 100%;
+    font-family: 'Creepster', cursive; /* Cambia la tipografía del encabezado */
 }
 
 section {
+    width: 90%;
+    max-width: 900px;
     padding: 20px;
+    margin: 10px 0;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.2s ease-in-out; /* Animación para los contenedores */
+    font-family: 'Cursive', cursive; /* Tipografía cursiva para secciones */
+}
+
+section:hover {
+    transform: scale(1.02); /* Agranda la sección ligeramente al pasar el cursor */
+}
+
+/* Títulos */
+h1, h2 {
+    color: #ff5722;
+    transition: color 0.3s ease;
+    font-family: 'Creepster', cursive; /* Mantiene la tipografía del título */
+}
+
+/* Productos */
+#productos {
+    width: 90%;
+    max-width: 900px; /* Mantiene el tamaño del contenedor de productos */
     margin: 10px 0;
 }
 
@@ -22,20 +58,51 @@ section {
 }
 
 .card {
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    width: 200px;
+    width: calc(100% / 2 - 20px);
+    max-width: 200px;
+    background-color: #333;
+    color: #f5f5f5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto de animación */
+    font-family: 'Creepster', cursive; /* Cambia la tipografía de la tarjeta */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Agranda solo la tarjeta en hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
 }
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 350px; /* Mantiene la altura de las imágenes */
+    object-fit: cover; /* Mantiene la proporción y recorta la imagen si es necesario */
+    transition: transform 0.3s ease; /* Transición para la imagen */
+}
+
+.card img:hover {
+    transform: scale(1.1); /* Efecto de zoom en la imagen */
+}
+
+.card h3 {
+    margin: 10px 0; /* Espaciado para el título */
+}
+
+.card .description {
+    font-size: 14px; /* Tamaño de fuente para la descripción */
+    color: #bbb; /* Color más claro para la descripción */
+    margin: 10px 0; /* Espaciado alrededor de la descripción */
 }
 
 .card p {
     margin: 10px 0;
+    transition: color 0.3s ease; /* Transición para el precio */
+}
+
+.card p:hover {
+    color: #ffa726; /* Cambia el color del precio en hover */
 }
 
 .card button {
@@ -45,16 +112,39 @@ section {
     padding: 10px;
     width: 100%;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición para el botón */
 }
 
+.card button:hover {
+    background-color: #ffa726; /* Color más claro al hacer hover */
+    transform: scale(1.05); /* Agranda ligeramente el botón */
+}
+
+/* Responsividad para diferentes tamaños de pantalla */
 @media (max-width: 768px) {
     .card {
-        width: 150px;
+        width: 100%; /* Una tarjeta por fila en pantallas pequeñas */
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
+    header, section {
+        padding: 15px; /* Ajusta el padding en móviles */
+    }
+
+    #productos .productos-container {
+        flex-direction: column; /* Apila las tarjetas en móviles */
+        align-items: center;
+    }
+    
     .card {
-        width: 120px;
+        width: 100%; /* Asegura que la tarjeta ocupe todo el ancho en móviles */
+        max-width: none; /* Se asegura de que no haya un límite máximo */
+    }
+    
+    .card img {
+        width: 90%; /* La imagen ocupa todo el ancho de la tarjeta */
+        height: 650px; /* Altura fija para imágenes en móviles */
     }
 }
